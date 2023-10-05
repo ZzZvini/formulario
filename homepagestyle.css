@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to right, rgb(128, 9, 9), rgb(15, 6, 94));
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+a {
+    background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+a:hover {
+    background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
+}
