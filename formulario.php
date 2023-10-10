@@ -1,3 +1,32 @@
+<?php
+
+//Com essa linha de codigo, no php ele está verificando se existe uma variavel submit 
+// (e quando clicar em "ENVIAR" vai existir essa submit e vai incluir o arquivo de config.php, igual mostra na proxima linha de comando com cada parametro 
+//e excutar no result):
+if (isset($_POST['submit'])) {
+    // para testar se está submitando:
+    // print_r($_POST['nome']);
+  
+    // Para incluir a conexão:
+    include_once('config.php');
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $sexo = $_POST['genero'];
+    $data_nasc = $_POST['data_nascimento'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    $endereco = $_POST['endereco'];
+
+    // Criaçao da Query de insert, já com as inserçoes e os valores no banco de dados:
+    // No INSERT INTO insiro as informações cadastradas na tabela do banco de dados , "INSERT INTO nome da tabela(nome,email,telefone,etc...)".
+    // Na mesma linha do INSERT , para adicionar os valores, coloco um VALUES('$nome','$email','$telefone'....e as variaveis declaradas).
+    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,telefone,sexo,data_nasc,cidade,estado,endereco) VALUES('$nome','$email','$telefone','$sexo','$data_nasc','$cidade','$estado','$endereco')");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +40,7 @@
 <body>
     <a href="homepage.html"> Voltar </a>
     <div class="box">
-        <form action="">
+        <form action="formulario.php" method="POST">
             <fieldset>
                 <legend> <b>Cadastro</b> </legend>
                 <div class="inputBox">
@@ -25,7 +54,7 @@
                 </div>
                 <br>
                 <div class="inputBox">
-                    <input type="text" id="email" class="inputUser" required>
+                    <input type="text" name="email" id="email" class="inputUser" required>
                     <label for="email" class="labelInput"> Email</label>
                 </div>
                 <br><br>
@@ -67,7 +96,7 @@
                 </div>
                 <br><br>
 
-                <input type="submit" id="submit">
+                <input type="submit" name="submit" id="submit">
             </fieldset>
         </form>
     </div>
